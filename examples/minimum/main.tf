@@ -1,39 +1,30 @@
 ## vars
-variable "proxmox_address" {
-  default = "192.168.1.2"
-}
-variable "proxmox_default_node" {
-  default = "node01"
-}
-variable "proxmox_default_storage" {
-  default = "pool01"
-}
-variable "proxmox_default_ssh_pub" {
-  default = "xxx"
-}
+variable "proxmox_address" {}
+variable "proxmox_default_node" {}
+variable "proxmox_default_storage" {}
+variable "proxmox_default_ssh_pub" {}
 
 module "vm_new" {
   source = "../../"
 
+  # connection
   proxmox_address         = var.proxmox_address
+  # allocation
   target_node             = var.proxmox_default_node
+  # create
   name                    = "vm-new"
-  clone                   = "template-debian-11"
   desc                    = "description"
-  memory                  = 512
-  cores                   = 1
-  cloudinit_cdrom_storage = var.proxmox_default_storage
+  clone                   = "template-debian-11"
+  # cloud-init
   ciuser                  = "ciusr01"
+  cloudinit_cdrom_storage = var.proxmox_default_storage
   sshkeys                 = var.proxmox_default_ssh_pub
-
-  # network block
-  network = {
-    bridge = "vmbr0"
-    tag    = "1001"
-  }
-  # disk block
-  disk = {
-    storage = var.proxmox_default_storage
-    size    = "10G"
-  }
+  # resources
+  cores                   = 1
+  memory                  = 512
+  ## disk
+  disk_size               = "10G"
+  disk_storage            = var.proxmox_default_storage
+  ## net
+  network_tag             = 1001
 }

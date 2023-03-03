@@ -11,11 +11,17 @@ variable "cloudinit_cdrom_storage" {}
 variable "ciuser" {}
 variable "sshkeys" {}
 
-variable "network" {
-  type = map(any)
+variable "disk_storage" {}
+variable "disk_size" {}
+
+variable "network_bridge" {
+  default = "vmbr0"
 }
-variable "disk" {
-  type = map(any)
+variable "network_tag" {
+  default = "-1"
+}
+variable "network_model" {
+  default = "virtio"
 }
 variable "ipconfig0" {
   type    = string

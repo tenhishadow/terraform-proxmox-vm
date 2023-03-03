@@ -19,20 +19,19 @@ resource "proxmox_vm_qemu" "this" {
   cloudinit_cdrom_storage = var.cloudinit_cdrom_storage
   ciuser                  = var.ciuser
   sshkeys                 = var.sshkeys
-
   # network block
   ipconfig0 = var.ipconfig0 != null ? var.ipconfig0 : ""
   network {
-    bridge = var.network["bridge"]
-    model  = "virtio"
-    tag    = var.network["tag"] != null ? var.network["tag"] : ""
+    bridge = var.network_bridge
+    model  = var.network_model
+    tag    = var.network_tag
   }
 
   # disk block
   disk {
     iothread = 1
-    storage  = var.disk["storage"]
-    size     = var.disk["size"]
+    storage  = var.disk_storage
+    size     = var.disk_size
     type     = "virtio"
   }
 }
