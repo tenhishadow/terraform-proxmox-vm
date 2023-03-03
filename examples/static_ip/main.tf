@@ -6,7 +6,7 @@ module "vm_new" {
   # allocation
   target_node = var.proxmox_default_node
   # create
-  name  = "tfm-proxmox-vm"
+  name  = "terraform-proxmox-vm"
   desc  = "example | static ip"
   id    = "${local.subnet}${local.ip}"
   clone = "template-debian-11"
