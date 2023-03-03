@@ -8,7 +8,7 @@ resource "proxmox_vm_qemu" "this" {
   # create
   name  = var.name
   desc  = var.desc
-  vmid    = var.id != null ? var.id : ""
+  vmid  = var.id != null ? var.id : ""
   clone = var.clone
   # resources
   memory = var.memory
