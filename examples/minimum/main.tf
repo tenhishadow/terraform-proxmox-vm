@@ -29,6 +29,7 @@ module "vm_new" {
   # network block
   network = {
     bridge = "vmbr0"
+    tag    = "1001"
   }
   # disk block
   disk = {
