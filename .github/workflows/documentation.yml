@@ -1,10 +1,15 @@
 name: Generate terraform docs
 on:
   - pull_request
-
 jobs:
   docs:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        docs_dirs:
+          - '.'
+          - 'examples/minimum'
+          - 'examples/static_ip'
     steps:
     - uses: actions/checkout@v3
       with:
