@@ -13,6 +13,10 @@ variable "sshkeys" {}
 
 variable "disk_storage" {}
 variable "disk_size" {}
+variable "id" {
+  type    = string
+  default = null
+}
 
 variable "network_bridge" {
   default = "vmbr0"
