@@ -1,24 +1,24 @@
-name: Generate terraform docs
-on:
-  - pull_request
-jobs:
-  docs:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        docs_dirs:
-          - '.'
-          - 'examples/minimum'
-          - 'examples/static_ip'
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        ref: ${{ github.event.pull_request.head.ref }}
-
-    - name: Render terraform docs and push changes back to PR
-      uses: terraform-docs/gh-actions@main
-      with:
-        working-dir: ${{ matrix.docs_dirs }}
-        output-file: README.md
-        output-method: inject
-        git-push: "true"
+# name: Generate terraform docs
+# on:
+#   - pull_request
+# jobs:
+#   docs:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         docs_dirs:
+#           - '.'
+#           - 'examples/minimum'
+#           - 'examples/static_ip'
+#     steps:
+#     - uses: actions/checkout@v3
+#       with:
+#         ref: ${{ github.event.pull_request.head.ref }}
+#
+#     - name: Render terraform docs and push changes back to PR
+#       uses: terraform-docs/gh-actions@main
+#       with:
+#         working-dir: ${{ matrix.docs_dirs }}
+#         output-file: README.md
+#         output-method: inject
+#         git-push: "true"
