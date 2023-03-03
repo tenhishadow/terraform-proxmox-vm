@@ -1,4 +1,4 @@
-# tfm_proxmox_vm
+# terraform-proxmox-vm
 terraform module to create vm in Proxmox Virtual Environment
 
 <!-- BEGIN_TF_DOCS -->
